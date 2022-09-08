@@ -9,9 +9,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: iopiopiopiop #Must be unique in Heroku
-          heroku_email: dmitriy.shevtsov.ua@gmail.com
+    - uses: actions/checkout@v1
+    - name: Push to Heroku
+      run: git push -f https://heroku:${{ secrets.HEROKU_API_TOKEN }}@git.heroku.com/iopiopiopiop.git origin/master:master
